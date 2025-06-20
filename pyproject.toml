@@ -13,11 +13,11 @@ dependencies = [
 ]
 
 [project.scripts]
-kis-stock-mcp = "server:main"
+kis-stock-mcp = "stock_mcp.server:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["."]
+packages = ["stock_mcp"]
