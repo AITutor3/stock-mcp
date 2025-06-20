@@ -1,0 +1,30 @@
+configSchema:
+  KIS_APP_KEY:
+    type: string
+    title: "KIS App Key"
+    required: true
+  KIS_APP_SECRET:
+    type: string
+    title: "KIS App Secret"
+    required: true
+  KIS_CANO:
+    type: string
+    title: "계좌번호 앞 6자리"
+    required: true
+  KIS_ACCOUNT_TYPE:
+    type: string
+    title: "계좌 유형 (REAL 또는 VIRTUAL)"
+    required: true
+
+startCommand:
+  type: stdio
+  commandFunction: |
+    (config) => ({
+      command: 'kis-stock-mcp',
+      env: {
+        KIS_APP_KEY: config.KIS_APP_KEY,
+        KIS_APP_SECRET: config.KIS_APP_SECRET,
+        KIS_CANO: config.KIS_CANO,
+        KIS_ACCOUNT_TYPE: config.KIS_ACCOUNT_TYPE
+      }
+    })

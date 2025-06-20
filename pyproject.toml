@@ -1,0 +1,23 @@
+[project]
+name = "kis-stock-mcp"
+version = "0.1.0"
+description = "MCP server for Korean stock trading with KIS OpenAPI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=1.0.0",
+    "httpx",
+    "python-dotenv",
+    "pydantic",
+    "pandas"
+]
+
+[project.scripts]
+kis-stock-mcp = "server:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["."]
