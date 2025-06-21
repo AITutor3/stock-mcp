@@ -3,33 +3,32 @@ build:
   dockerfile: "Dockerfile"
   dockerBuildPath: "."
 
-configSchema:
-  type: "object"
-  properties:
-    KIS_APP_KEY:
-      type: "string"
-      title: "KIS App Key"
-      description: "한국투자증권 API 앱 키"
-    KIS_APP_SECRET:
-      type: "string"
-      title: "KIS App Secret"
-      description: "한국투자증권 API 앱 시크릿"
-    KIS_CANO:
-      type: "string"
-      title: "계좌번호 앞 6자리"
-      description: "한국투자증권 계좌번호 앞 6자리"
-    KIS_ACCOUNT_TYPE:
-      type: "string"
-      title: "계좌 유형 (REAL 또는 VIRTUAL)"
-      description: "계좌 유형 (REAL 또는 VIRTUAL)"
-  required:
-    - KIS_APP_KEY
-    - KIS_APP_SECRET
-    - KIS_CANO
-    - KIS_ACCOUNT_TYPE
-
 startCommand:
-  type: "stdio"
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      KIS_APP_KEY:
+        type: string
+        title: "KIS App Key"
+        description: "한국투자증권 API 앱 키"
+      KIS_APP_SECRET:
+        type: string
+        title: "KIS App Secret"
+        description: "한국투자증권 API 앱 시크릿"
+      KIS_CANO:
+        type: string
+        title: "계좌번호 앞 6자리"
+        description: "한국투자증권 계좌번호 앞 6자리"
+      KIS_ACCOUNT_TYPE:
+        type: string
+        title: "계좌 유형 (REAL 또는 VIRTUAL)"
+        description: "계좌 유형 (REAL 또는 VIRTUAL)"
+    required:
+      - KIS_APP_KEY
+      - KIS_APP_SECRET
+      - KIS_CANO
+      - KIS_ACCOUNT_TYPE
   commandFunction: |
     (config) => ({
       command: 'kis-stock-mcp',
@@ -40,9 +39,8 @@ startCommand:
         KIS_ACCOUNT_TYPE: config.KIS_ACCOUNT_TYPE
       }
     })
-
-exampleConfig:
-  KIS_APP_KEY: "your-app-key"
-  KIS_APP_SECRET: "your-app-secret"
-  KIS_CANO: "123456"
-  KIS_ACCOUNT_TYPE: "REAL"
+  exampleConfig:
+    KIS_APP_KEY: "your-app-key"
+    KIS_APP_SECRET: "your-app-secret"
+    KIS_CANO: "123456"
+    KIS_ACCOUNT_TYPE: "REAL"
